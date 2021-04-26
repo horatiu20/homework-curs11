@@ -11,7 +11,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ReportGenerator {
@@ -45,14 +44,11 @@ public class ReportGenerator {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("files/grade-reports.out"))) {
 			for (StudentGrade all : students) {
 				result.add(all.getGrade());
-				if (-----------------------------) {            //aici ar trebui o conditie si nu ma descurc
-					writer.write("Cea mai mare nota: " + students);
+				if (all.getGrade() == 3) {      // in loc de 3 ar trebui sa pun ceva... nu ma descurc (la fel as face si la cea mai mare)
+					writer.write("Cea mai mica nota: " + all);
 					writer.newLine();
 				}
 			}
 		}
 	}
 }
-
-
-
