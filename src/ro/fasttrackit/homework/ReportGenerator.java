@@ -1,20 +1,23 @@
 package ro.fasttrackit.homework;
 
-/*Continua exercitiul precedent si creeaza un obiect ReportGenerator care primeste lista cu notele studentilor.
-ReportGenerator are o metoda generateReport care genereaza urmatorul raport intr-un fisier: grade-reports.out
+/*Continua exercițiul precedent si creează un obiect ReportGenerator care primește lista cu notele studenților.
+ReportGenerator are o metoda generateReport care generează următorul raport într-un fișier: grade-reports.out
 	a) Cea mai mare nota:  <studentul cu cea mai mare nota> <nota>
-	b) Nota medie: <nota medie>
-	c) Cea mai mica nota: <studentul cu cea mai mica nota> <nota>*/
+	b) Nota medie:         <nota medie>
+	c) Cea mai mica nota:  <studentul cu cea mai mica nota> <nota>*/
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReportGenerator {
 	public static void main(String[] args) throws Exception {
 		List<StudentGrade> students = readStudents();
-		generateReport();
+		generateReport(students);
 	}
 
 	private static StudentGrade studentInfo(String studentInfo) {
@@ -37,7 +40,19 @@ public class ReportGenerator {
 		return students;
 	}
 
-	private static void generateReport() throws Exception {
-
+	private static void generateReport(List<StudentGrade> students) throws Exception {
+		List<Integer> result = new ArrayList<>();
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("files/grade-reports.out"))) {
+			for (StudentGrade all : students) {
+				result.add(all.getGrade());
+				if (-----------------------------) {            //aici ar trebui o conditie si nu ma descurc
+					writer.write("Cea mai mare nota: " + students);
+					writer.newLine();
+				}
+			}
+		}
 	}
 }
+
+
+
