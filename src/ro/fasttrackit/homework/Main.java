@@ -37,7 +37,7 @@ public class Main {
 				new StudentGrade("Ermingard Tome", "Physics", 10),
 				new StudentGrade("Jannike Lucianv", "Computer Science", 3),
 				new StudentGrade("Neela Amaltheia", "Physics", 6),
-				new StudentGrade("Asim Jeltje", "Computer Science", 17),
+				new StudentGrade("Asim Jeltje", "Computer Science", 7),
 				new StudentGrade("Dulf Siguror", "Mathematics", 4),
 				new StudentGrade("Eilert Mechteld", "Mathematics", 6),
 				new StudentGrade("Storm Lital", "Computer Science", 9),
@@ -46,8 +46,8 @@ public class Main {
 		System.out.println("All grades for discipline: " + classroom.getGradesForDiscipline("Physics"));
 		System.out.println("Student grade for student: " + classroom.getGradesForStudent("Bennett Frieda"));
 		System.out.println("Max grade for discipline: " + classroom.getMaxGrade("Physics"));
-		System.out.println("Worst grade for discipline: " + classroom.getWorstGrade("Physics"));
-		System.out.println("Average grade for discipline: " + classroom.geAverageGrade("Physics"));
 		System.out.println("Max grade: " + classroom.getMaxGrade());
+		System.out.println("Average grade for discipline: " + classroom.geAverageGrade("Physics"));
+		System.out.println("Worst grade for discipline: " + classroom.getWorstGrade("Physics"));
 	}
 }

@@ -41,14 +41,12 @@ public class Classroom {
 		return Collections.max(result);
 	}
 
-	public int getWorstGrade(String discipline) {
+	public int getMaxGrade() {
 		List<Integer> result = new ArrayList<>();
 		for (StudentGrade all : students) {
-			if (discipline.equals(all.getDiscipline())) {
-				result.add(all.getGrade());
-			}
+			result.add(all.getGrade());
 		}
-		return Collections.min(result);
+		return Collections.max(result);
 	}
 
 	public int geAverageGrade(String discipline) {
@@ -63,13 +61,13 @@ public class Classroom {
 		return sum / result.size();
 	}
 
-	public List<Integer> getMaxGrade() {
+	public int getWorstGrade(String discipline) {
 		List<Integer> result = new ArrayList<>();
 		for (StudentGrade all : students) {
-			if (10 == (all.getGrade())) {
+			if (discipline.equals(all.getDiscipline())) {
 				result.add(all.getGrade());
 			}
 		}
-		return result;
+		return Collections.min(result);
 	}
 }

@@ -1,14 +1,20 @@
 package ro.fasttrackit.homework;
 
+/*Continua exercitiul precedent si creeaza un obiect ReportGenerator care primeste lista cu notele studentilor.
+ReportGenerator are o metoda generateReport care genereaza urmatorul raport intr-un fisier: grade-reports.out
+	a) Cea mai mare nota:  <studentul cu cea mai mare nota> <nota>
+	b) Nota medie: <nota medie>
+	c) Cea mai mica nota: <studentul cu cea mai mica nota> <nota>*/
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GradesFile {
+public class ReportGenerator {
 	public static void main(String[] args) throws Exception {
 		List<StudentGrade> students = readStudents();
-		System.out.println(students);
+		generateReport();
 	}
 
 	private static StudentGrade studentInfo(String studentInfo) {
@@ -29,5 +35,9 @@ public class GradesFile {
 			students.add(studentInfo(line));
 		}
 		return students;
+	}
+
+	private static void generateReport() throws Exception {
+
 	}
 }
