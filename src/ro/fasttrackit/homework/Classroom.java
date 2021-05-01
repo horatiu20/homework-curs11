@@ -2,8 +2,6 @@ package ro.fasttrackit.homework;
 
 import java.util.*;
 
-import static java.lang.Math.max;
-
 public class Classroom {
 	private final List<StudentGrade> students;
 
@@ -41,16 +39,11 @@ public class Classroom {
 		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade));
 	}
 
-	public List<StudentGrade> getMaxGrade() {
+	public StudentGrade getMaxGrade() {
 		List<StudentGrade> result = new ArrayList<>();
-		int maxGrade = max(0, 10);
-		for (StudentGrade all : students) {
-			if (all.getGrade() == maxGrade) {
-				result.add(all);
-			}
-		}
-		return result;
-	}
+		result.addAll(students);
+		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade)); // imi returneaza doar primul obiect intalnit cu nota maxima si
+	}                                                                                 // nu imi dau seama cum pot sa fac sa treaca mai departe
 
 	public int geAverageGrade(String discipline) {
 		List<Integer> result = new ArrayList<>();
