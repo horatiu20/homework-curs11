@@ -1,8 +1,6 @@
 package ro.fasttrackit.homework;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Classroom {
 	private final List<StudentGrade> students;
@@ -22,32 +20,30 @@ public class Classroom {
 		return result;
 	}
 
-	public int getGradesForStudent(String student) {
+	public StudentGrade getGradesForStudent(String student) {
 		for (StudentGrade all : students) {
 			if (student.equals(all.getName())) {
-				return all.getGrade();
+				return all;
 			}
 		}
-		return -1;
+		return null;
 	}
 
-	public int getMaxGrade(String discipline) {
-		List<Integer> result = new ArrayList<>();
+	public StudentGrade getMaxGrade(String discipline) {
+		List<StudentGrade> result = new ArrayList<>();
 		for (StudentGrade all : students) {
 			if (discipline.equals(all.getDiscipline())) {
-				result.add(all.getGrade());
+				result.add(all);
 			}
 		}
-		return Collections.max(result);
+		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade));
 	}
 
-	public int getMaxGrade() {
-		List<Integer> result = new ArrayList<>();
-		for (StudentGrade all : students) {
-			result.add(all.getGrade());
-		}
-		return Collections.max(result);
-	}
+	public StudentGrade getMaxGrade() {
+		List<StudentGrade> result = new ArrayList<>();
+		result.addAll(students);
+		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade)); // imi returneaza doar primul obiect intalnit cu nota maxima si
+	}                                                                                 // nu imi dau seama cum pot sa fac sa treaca mai departe
 
 	public int geAverageGrade(String discipline) {
 		List<Integer> result = new ArrayList<>();
@@ -61,13 +57,13 @@ public class Classroom {
 		return sum / result.size();
 	}
 
-	public int getWorstGrade(String discipline) {
-		List<Integer> result = new ArrayList<>();
+	public StudentGrade getWorstGrade(String discipline) {
+		List<StudentGrade> result = new ArrayList<>();
 		for (StudentGrade all : students) {
 			if (discipline.equals(all.getDiscipline())) {
-				result.add(all.getGrade());
+				result.add(all);
 			}
 		}
-		return Collections.min(result);
+		return Collections.min(result, Comparator.comparing(StudentGrade::getGrade));
 	}
 }
