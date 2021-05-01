@@ -40,11 +40,11 @@ public class ReportGenerator {
 	}
 
 	private static void generateReport(List<StudentGrade> students) throws Exception {
-		List<Integer> result = new ArrayList<>();
+		List<StudentGrade> result = new ArrayList<>();
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("files/grade-reports.out"))) {
 			for (StudentGrade all : students) {
-				result.add(all.getGrade());
-				if (all.getGrade() == 3) {      // in loc de 3 ar trebui sa pun ceva... nu ma descurc (la fel as face si la cea mai mare)
+				result.add(all);
+				if (all.getGrade() == 3) {
 					writer.write("Cea mai mica nota: " + all);
 					writer.newLine();
 				}
