@@ -39,11 +39,20 @@ public class Classroom {
 		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade));
 	}
 
-	public StudentGrade getMaxGrade() {
+	public List<StudentGrade> getMaxGrade() {
 		List<StudentGrade> result = new ArrayList<>();
-		result.addAll(students);
-		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade)); // imi returneaza doar primul obiect intalnit cu nota maxima si
-	}                                                                                 // nu imi dau seama cum pot sa fac sa treaca mai departe
+		int grade = Integer.MIN_VALUE;
+		for (StudentGrade all : students) {
+			if (all.getGrade() > grade) {
+				grade = all.getGrade();
+				result.clear();
+				result.add(all);
+			} else if (all.getGrade() == grade) {
+				result.add(all);
+			}
+		}
+		return result;
+	}
 
 	public int geAverageGrade(String discipline) {
 		List<Integer> result = new ArrayList<>();
