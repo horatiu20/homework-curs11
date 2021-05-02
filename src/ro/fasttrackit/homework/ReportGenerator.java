@@ -41,13 +41,21 @@ public class ReportGenerator {
 
 	private static void generateReport(List<StudentGrade> students) throws Exception {
 		List<StudentGrade> result = new ArrayList<>();
+		int grade = Integer.MIN_VALUE;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("files/grade-reports.out"))) {
 			for (StudentGrade all : students) {
-				result.add(all);
-				if (all.getGrade() == 3) {
-					writer.write("Cea mai mica nota: " + all);
+				if (all.getGrade() > grade) {
+					grade = all.getGrade();
+					result.clear();
+					result.add(all);
+					writer.write("Cea mai mare nota: " + all);
+					writer.newLine();
+				} else if (all.getGrade() == grade) {
+					result.add(all);
+					writer.write("Cea mai mare nota: " + all);
 					writer.newLine();
 				}
+
 			}
 		}
 	}

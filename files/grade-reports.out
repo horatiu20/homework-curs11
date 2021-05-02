@@ -1,2 +1,4 @@
-Cea mai mica nota: StudentGrade{name='Utu Arcadius', discipline='Physics', grade=3}
-Cea mai mica nota: StudentGrade{name='Jannike Lucianv', discipline='Computer Science', grade=3}
+Cea mai mare nota: StudentGrade{name='Ealhstan Saira', discipline='Computer Science', grade=8}
+Cea mai mare nota: StudentGrade{name='Majken Olgica', discipline='History', grade=10}
+Cea mai mare nota: StudentGrade{name='Miriana Rómulo', discipline='Computer Science', grade=10}
+Cea mai mare nota: StudentGrade{name='Ermingard Tome', discipline='Physics', grade=10}

@@ -29,14 +29,21 @@ public class Classroom {
 		return null;
 	}
 
-	public StudentGrade getMaxGrade(String discipline) {
+	public List<StudentGrade> getMaxGrade(String discipline) {
 		List<StudentGrade> result = new ArrayList<>();
+		int grade = Integer.MIN_VALUE;
 		for (StudentGrade all : students) {
 			if (discipline.equals(all.getDiscipline())) {
-				result.add(all);
+				if (all.getGrade() > grade) {
+					grade = all.getGrade();
+					result.clear();
+					result.add(all);
+				} else if (all.getGrade() == grade) {
+					result.add(all);
+				}
 			}
 		}
-		return Collections.max(result, Comparator.comparing(StudentGrade::getGrade));
+		return result;
 	}
 
 	public List<StudentGrade> getMaxGrade() {
@@ -66,13 +73,20 @@ public class Classroom {
 		return sum / result.size();
 	}
 
-	public StudentGrade getWorstGrade(String discipline) {
+	public List<StudentGrade> getWorstGrade(String discipline) {
 		List<StudentGrade> result = new ArrayList<>();
+		int grade = Integer.MAX_VALUE;
 		for (StudentGrade all : students) {
 			if (discipline.equals(all.getDiscipline())) {
-				result.add(all);
+				if (all.getGrade() < grade) {
+					grade = all.getGrade();
+					result.clear();
+					result.add(all);
+				} else if (all.getGrade() == grade) {
+					result.add(all);
+				}
 			}
 		}
-		return Collections.min(result, Comparator.comparing(StudentGrade::getGrade));
+		return result;
 	}
 }
