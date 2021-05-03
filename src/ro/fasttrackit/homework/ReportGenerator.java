@@ -41,22 +41,43 @@ public class ReportGenerator {
 
 	private static void generateReport(List<StudentGrade> students) throws Exception {
 		List<StudentGrade> result = new ArrayList<>();
-		int grade = Integer.MIN_VALUE;
+		List<Integer> averageGrade = new ArrayList<>();
+		int gradeMin = Integer.MIN_VALUE;
+		int gradeMax = Integer.MAX_VALUE;
+		int sum = 0;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("files/grade-reports.out"))) {
 			for (StudentGrade all : students) {
-				if (all.getGrade() > grade) {
-					grade = all.getGrade();
+				if (all.getGrade() > gradeMin) {
+					gradeMin = all.getGrade();
 					result.clear();
 					result.add(all);
-					writer.write("Cea mai mare nota: " + all);
-					writer.newLine();
-				} else if (all.getGrade() == grade) {
+				} else if (all.getGrade() == gradeMin) {
+					result.clear();
 					result.add(all);
-					writer.write("Cea mai mare nota: " + all);
-					writer.newLine();
-				}
-
+					writer.write("Cea mai mare nota: " + result);
+					writer.newLine();                   // nu stiu de ce nu imi scoate si PRIMUL student cu nota cea mai mare
+				}                                       // pe care il intalneste
 			}
+			for (StudentGrade all : students) {
+				if (all.getGrade() < gradeMax) {
+					gradeMax = all.getGrade();
+					result.clear();
+					result.add(all);
+				} else if (all.getGrade() == gradeMax) {
+					result.clear();
+					result.add(all);
+					writer.write("Cea mai mica nota: " + result);
+					writer.newLine();                   // nu stiu de ce nu imi scoate si ULTIMUL student cu nota cea mai mica
+				}                                       // pe care il intalneste
+			}
+			for (StudentGrade all : students) {
+				if (all.getGrade() >= gradeMax) {
+					averageGrade.add(all.getGrade());
+					sum += all.getGrade();
+				}
+			}
+			writer.write("Nota medie (nr. intreg) a clasei este: " + sum / averageGrade.size());
+			writer.newLine();
 		}
 	}
 }
