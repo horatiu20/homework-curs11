@@ -21,9 +21,9 @@ public class Classroom {
 	}
 
 	public StudentGrade getGradesForStudent(String student) {
-		for (StudentGrade all : students) {
-			if (student.equals(all.getName())) {
-				return all;
+		for (StudentGrade grade : students) {
+			if (student.equals(grade.getName())) {
+				return grade;
 			}
 		}
 		return null;
@@ -46,19 +46,12 @@ public class Classroom {
 		return result;
 	}
 
-	public List<StudentGrade> getMaxGrade() {
-		List<StudentGrade> result = new ArrayList<>();
-		int grade = Integer.MIN_VALUE;
+	public int getMaxGrade() {
+		List<Integer> result = new ArrayList<>();
 		for (StudentGrade all : students) {
-			if (all.getGrade() > grade) {
-				grade = all.getGrade();
-				result.clear();
-				result.add(all);
-			} else if (all.getGrade() == grade) {
-				result.add(all);
-			}
+			result.add(all.getGrade());
 		}
-		return result;
+		return Collections.max(result);
 	}
 
 	public int geAverageGrade(String discipline) {
